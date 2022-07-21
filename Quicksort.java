@@ -36,16 +36,22 @@ public class Quicksort {
         while (leftPointer < rightPointer) { // when we hit pointers we stop
             // left side first
             while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
-                leftPointer++;
+                leftPointer++; // move our left pointer until we find a value greater than pivot
             }
             // right side second
             while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
-                rightPointer--;
+                rightPointer--; // move our right pointer until we find a value less than pivot
             }
+            // when we find a leftpointer greater than pivot
+            // and we find a right pointer less than pivot
+            // we swap those values
             swap(array, leftPointer, rightPointer);
         }
 
         // when pointers are in position to move pivot, high index is our pivot index
+        // in other words, when our left pointer is no longer less than our right
+        // pointer, they are in the same position
+        // then we move pivot, or the new highindex is our new pivot
         swap(array, leftPointer, highIndex);
         // partitioning finished, time for recursive call to sort partitioned arrays to
         // the left and right of pivot
